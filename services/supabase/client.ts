@@ -15,9 +15,18 @@ export const isSupabaseConfigured = () => {
 };
 
 export const checkSupabaseConnection = async () => {
+  // First check if Supabase is configured
+  if (!isSupabaseConfigured()) {
+    return false;
+  }
+
   try {
     const { data, error } = await supabase.from('channel_stats').select('count', { count: 'exact', head: true });
-    return true; 
+    if (error) {
+      console.error('Supabase connection check failed:', error);
+      return false;
+    }
+    return true;
   } catch (error) {
     console.error('Supabase connection check failed:', error);
     return false;
