@@ -1,7 +1,8 @@
 import { GoogleGenAI } from "@google/genai";
 import { CHANNEL_CONTEXT, MOCK_VIDEOS, MOCK_IDEAS } from "../constants";
+import config from "../config";
 
-const apiKey = process.env.API_KEY || ''; // In a real app, ensure this is handled securely
+const apiKey = config.gemini.apiKey;
 
 let ai: GoogleGenAI | null = null;
 

@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { Send, Bot, User, Sparkles } from 'lucide-react';
-import { sendMessageToGemini } from '../services/geminiService';
+import { sendMessageToGemini } from '../services/gemini';
 import { ChatMessage } from '../types';
 
 const SparringPartner: React.FC = () => {

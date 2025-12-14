@@ -1,4 +1,4 @@
-import { Video } from '../types';
+import { Video } from '../../types';
 
 const BASE_URL = 'https://www.googleapis.com/youtube/v3';
 

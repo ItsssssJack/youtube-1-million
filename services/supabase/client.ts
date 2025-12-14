@@ -1,10 +1,18 @@
 import { createClient } from '@supabase/supabase-js';
-import { Idea } from '../types';
+import { Idea } from '../../types';
+import config from '../../config';
 
-const supabaseUrl = 'https://gsgqulxxdxyhykyiyiap.supabase.co';
-const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImdzZ3F1bHh4ZHh5aHlreWl5aWFwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjUzNjk0NTksImV4cCI6MjA4MDk0NTQ1OX0.Oy_24zGyVg449OBU8Dml9wAy7Vx-8qRW5feSPETysdw';
+// Create a dummy client if credentials are missing (prevents app crash)
+const supabaseUrl = config.supabase.url || 'https://placeholder.supabase.co';
+const supabaseKey = config.supabase.anonKey || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBsYWNlaG9sZGVyIiwicm9sZSI6ImFub24iLCJpYXQiOjE2NDUxOTI4MDAsImV4cCI6MTk2MDc2ODgwMH0.placeholder';
 
 export const supabase = createClient(supabaseUrl, supabaseKey);
+
+// Check if Supabase is properly configured
+export const isSupabaseConfigured = () => {
+  return config.supabase.url && config.supabase.anonKey &&
+         config.supabase.url !== 'https://placeholder.supabase.co';
+};
 
 export const checkSupabaseConnection = async () => {
   try {

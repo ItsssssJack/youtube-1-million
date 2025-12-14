@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Search, ArrowRight, Save, TrendingUp, AlertTriangle, Loader } from 'lucide-react';
-import { analyzeVideoUrl } from '../services/youtubeService';
-import { saveIdeaToSupabase } from '../services/supabaseClient';
+import { analyzeVideoUrl } from '../services/youtube/api';
+import { saveIdeaToSupabase } from '../services/supabase/client';
 import { Idea } from '../types';
 
 interface VideoAnalyzerProps {
